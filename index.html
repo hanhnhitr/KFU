@@ -15,7 +15,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; 
+            height: 100vh;
             text-align: center;
             padding: 20px;
             font-weight: bold;
@@ -33,14 +33,8 @@
         }
 
         .container {
-    max-width: 600px;
-    width: 90%; /* Để phù hợp với màn hình nhỏ */
-    margin: auto; /* Đảm bảo căn giữa theo chiều ngang */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+            max-width: 600px;
+        }
 
         p {
             text-align: justify;
@@ -75,14 +69,6 @@
         button:hover {
             background-color: #B0003A;
         }
-        @media (max-width: 400px) {
-    .container {
-        width: 95%; /* Tăng độ rộng cho màn hình nhỏ */
-    }
-    textarea {
-        height: 80px; /* Giảm chiều cao box để tránh bị lệch */
-    }
-}
     </style>
 </head>
 <body>

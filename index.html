@@ -19,6 +19,17 @@
             text-align: center;
             padding: 20px;
             font-weight: bold;
+            position: relative; /* Để có thể căn chỉnh phần tử con */
+        }
+
+        .top-text {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: normal;
+            color: #B0003A;
         }
 
         .container {
@@ -58,17 +69,13 @@
         button:hover {
             background-color: #B0003A;
         }
-        small {
-    font-size: 12px;
-    font-weight: normal;
-    display: block;
-    margin-bottom: 5px;
-}
     </style>
 </head>
 <body>
+
+    <small class="top-text">Please switch to the light theme site if you are in dark mode</small>
+
     <div class="container">
-        <small>Please switch to the light theme site if you are in dark mode</small>
         <p>Perhaps today is the saddest of all, for it is our final meeting. If I were never to see you again, my soul would ache with endless sorrow,
         a longing that time could never mend.</p>
         <p>But still, "I was enchanted to meet you" - if only for a moment, if only to say goodbye.</p>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOR U</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+        body {
+            background-color: #fae3e5;
+            color: #D81B60;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 600px;
+        }
+
+        p {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            font-family: 'Nunito', sans-serif;
+            padding: 10px;
+            border: 2px solid #D81B60;
+            border-radius: 5px;
+            background-color: #fbeff1;
+            resize: none;
+            font-weight: bold;
+            color: #D81B60;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #D81B60;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #B0003A;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Perhaps today is the saddest of all, for it is our final meeting. If I were never to see you again, my soul would ache with endless sorrow,
+        a longing that time could never mend. But still, I was enchanted to meet you—if only for a moment, if only to say goodbye.</p>
+        <p>A fleeting love, a wistful goodbye,</p>
+        <p>Thank you for coming, even if only to leave.</p>
+
+        <form id="responseForm">
+            <textarea id="responseText" name="message" placeholder="Kindly send a response if possible T^T"></textarea><br>
+            <button type="button" onclick="sendReply()">Send Reply ><</button>
+            <p id="status"></p>
+        </form>
+    </div>
+
+    <script>
+        function sendReply() {
+            var response = document.getElementById("responseText").value.trim();
+            
+            if (response === "") {
+                document.getElementById("status").innerText = "Please enter a message!";
+                return;
+            }
+    
+            var sheetURL = "https://script.google.com/macros/s/AKfycbysqaGycro2uP2DYywB4tyMFT2N-3PoCa8JB5l9URLOK5TQECQCeWHgxjipOntlBk_hPw/exec"; 
+    
+            fetch(sheetURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({ message: response })
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("status").innerText = "Response sent!";
+                document.getElementById("responseText").value = "";
+            })
+            .catch(error => {
+                document.getElementById("status").innerText = "Failed to send! Error: " + error;
+            });
+        }
+    </script>
+    
+</body>
+</html>
